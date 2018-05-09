@@ -76,7 +76,8 @@ public class Controller {
     }
 
     /*
-     * 
+     * Ruft für jedes Hindernis im Hindernis-Array die Update-Methode auf,
+     * in welcher die y-Koordinate verändert wird
      */
     public void update() {
 
@@ -84,7 +85,11 @@ public class Controller {
             h.update(counter);
         }
     }
-
+    
+    /*
+     * erhöht den Counter, bei jedem durchlauf (wird später für Score benötigt)
+     * gibt Zahl als float zurück
+     */
     public float increaseCounter(float zahl) {
 
         if (zahl < 5) {
@@ -97,10 +102,18 @@ public class Controller {
         return zahl;
     }
 
+    /*
+     * mit einem Input-Dialog wird ein Name verlangt
+     * gibt String mit Name zurück
+     */
     public String eingabeName() {
         return JOptionPane.showInputDialog("Bitte Name eingeben");
     }
 
+    /*
+     * überprüft Kollision der Rakete mit den Planeten
+     * gibt true oder false zurück
+     */
     public boolean loss() {
 
         for (Hindernis h : hindernisse) {
@@ -112,6 +125,11 @@ public class Controller {
         return true;
     }
 
+    /*
+     * Macht alle Hindernisse unsichtbar und gibt den Punktestand (int) zurück
+     * Dabei wird berücksichtigt, dass wenn beim ersten Hindernis gecrasht wird
+     * der Score 0 ist
+     */
     public int stoppen() {
 
         for (Hindernis h : hindernisse) {
@@ -122,6 +140,12 @@ public class Controller {
         return punkte;
     }
 
+    /*
+     * öffnet eine MessageBox, in welcher wenn vorhanden der Name mit dem Score
+     * und einem kleinen Kommentar zum Punktestand
+     * @name wurde zuvor eingelesen
+     * @score wurde mit der stoppen-Methode zurückgegeben
+     */
     public void scoreEintragen(String name, int score) {
     	if (name.length() == 0) {
     		if (score <= 300) {
