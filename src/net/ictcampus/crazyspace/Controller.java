@@ -2,6 +2,12 @@ package net.ictcampus.crazyspace;
 
 import javax.swing.JOptionPane;
 
+/*
+ * Controller ist zuständig, zwei Hindernisse auf das Frame zu machen
+ * Alle Hindernisse des Hindernis-Arrays werden auf einer fixen Spalte dargestellt
+ * Die Hindernisse werden in einer while-Schleife immer weiter nach untern fallen,
+ * bis sie schlussendlich verschwinden und wieder beginnen von oben nach unten zu gehen
+ */
 public class Controller {
 
     Hindernis[] hindernisse;
@@ -14,6 +20,7 @@ public class Controller {
     private int score;
     private String name;
 
+    // Konstruktor
     public Controller(CrazySpaceFrame fr, Spielfigur sp) {
         this.frame = fr;
         this.spieler = sp;
@@ -29,6 +36,9 @@ public class Controller {
         scoreEintragen(name, score);
     }
 
+    /*
+     *  erstellt neue Hindernis-Objekte, welche anschliessend dem Frame hinzugefügt werden
+     */
     public void initHindernisse() {
         for (int i = 0; i < hindernisse.length; i++) {
             hindernisse[i] = new Hindernis();
@@ -36,6 +46,11 @@ public class Controller {
         }
     }
 
+    /*
+     * Regelt den Fluss des Spiels ("fall"-Effekt der Hindernisse)
+     * jeweils kurzer "Sleep", dass die Hindernisse nicht undendlich schnell fallen
+     * ist beendet, wenn while-Schleife "false" ist
+     */
     public void play() {
         counter = 2;
         spielen = true;
@@ -60,6 +75,9 @@ public class Controller {
         }
     }
 
+    /*
+     * 
+     */
     public void update() {
 
         for (Hindernis h : hindernisse) {
@@ -105,17 +123,29 @@ public class Controller {
     }
 
     public void scoreEintragen(String name, int score) {
-
-        if (score <= 300) {
-            JOptionPane.showMessageDialog(frame,
-                    name + " hat " + score + " Punkte erreicht, da muss noch geübt werden.");
-        } else if (score > 300 && score <= 500) {
-            JOptionPane.showMessageDialog(frame,
-                    name + " hat " + score + " Punkte erreicht, dass lässt sich doch sehen.");
-        } else if (score > 500) {
-            JOptionPane.showMessageDialog(frame,
-                    name + " hat " + score + " Punkte erreicht, dass ist eine gute Leistung.");
-        }
-
+    	if (name.length() == 0) {
+    		if (score <= 300) {
+                JOptionPane.showMessageDialog(frame,
+                		"Du hast " + score + " Punkte erreicht, da muss noch geübt werden.");
+            } else if (score > 300 && score <= 500) {
+                JOptionPane.showMessageDialog(frame,
+                		"Du hast " + score + " Punkte erreicht, dass lässt sich doch sehen.");
+            } else if (score > 500) {
+                JOptionPane.showMessageDialog(frame,
+                        "Du hast " + score + " Punkte erreicht, dass ist eine gute Leistung.");
+            }
+    	}
+    	else {
+    		if (score <= 300) {
+                JOptionPane.showMessageDialog(frame,
+                        name + " hat " + score + " Punkte erreicht, da muss noch geübt werden.");
+            } else if (score > 300 && score <= 500) {
+                JOptionPane.showMessageDialog(frame,
+                        name + " hat " + score + " Punkte erreicht, dass lässt sich doch sehen.");
+            } else if (score > 500) {
+                JOptionPane.showMessageDialog(frame,
+                        name + " hat " + score + " Punkte erreicht, dass ist eine gute Leistung.");
+            }
+    	}
     }
 }

@@ -11,8 +11,8 @@ import javax.swing.JPanel;
 
 /*
  * Erstellt neues Frame in Main Methode
- * Zusätzlich wird ein Spieler und ein Controller erstellt
- * Regelt grösse des Frames und ruft den Controller auf
+ * Zusätzlich wird ein Spieler und ein Controller erstellt (welcher zuständig für die Hindernisse ist)
+ * Regelt grösse und Ansicht des Frames und ruft den Controller auf
  */
 public class CrazySpaceFrame extends JFrame {
 
@@ -56,7 +56,7 @@ public class CrazySpaceFrame extends JFrame {
     public void setBackgroundImage() {
         try {
             final Image backgroundImage = javax.imageio.ImageIO
-                    .read(new File("../space.jpg"));
+                    .read(new File("src/net/ictcampus/crazyspace/space.jpg"));
             setContentPane(new JPanel(new BorderLayout()) {
                 @Override
                 public void paintComponent(Graphics g) {

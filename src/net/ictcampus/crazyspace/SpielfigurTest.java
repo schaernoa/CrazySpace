@@ -21,7 +21,7 @@ class SpielfigurTest {
     }
 
     @Test
-    void test() {
+    void bewegenTest() {
         figur.bewegen("Rechts");
         int posX = figur.getxPos();
         Assert.assertEquals(450, posX);
