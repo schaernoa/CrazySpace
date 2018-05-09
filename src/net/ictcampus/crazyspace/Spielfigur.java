@@ -11,7 +11,6 @@ public class Spielfigur extends JPanel {
     private int yPos = 700;
     private int width = 100;
     private int height = 100;
-    
     private ImageIcon icon;
     
 
@@ -24,7 +23,9 @@ public class Spielfigur extends JPanel {
         this.setBounds(xPos, yPos, width, height);
     }
     
-    // bewegen() Methode
+    /*
+     * Setzt Spielfigur auf vorgesehene Position
+     */
     public void bewegen(String richtung) {
         if (richtung.equals("Rechts")) {
             if(xPos <= 250) {
@@ -39,7 +40,9 @@ public class Spielfigur extends JPanel {
         setBounds(xPos, yPos, width, height);
     }
     
-    
+    /*
+     * Getter Methoden
+     */
     public int getxPos() {
         return xPos;
     }

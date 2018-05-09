@@ -26,10 +26,16 @@ public class Hindernis extends JPanel {
         xPos = generateXLocation();
     }
     
+    /*
+     * Gibt random einer der folgenden drei werte zurück: 50, 250, 450
+     */
     public int generateXLocation() {
         return ((200 * rand.nextInt(3)) + 50);
     }
     
+    /*
+     * Setzt Hindernisse auf vorgesehene Position
+     */
     public void update(float counter){
 
         speed = (int) counter;
@@ -45,7 +51,9 @@ public class Hindernis extends JPanel {
         }
     }
 
-    // Getter und Setter
+    /*
+     * Getter Methoden
+     */
     public int getxPos() {
         return xPos;
     }
